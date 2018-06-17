@@ -3,7 +3,7 @@
 // @name:ja        pixiv_expand_thumbnails
 // @name:zh-CN     pixiv_expand_thumbnails
 // @namespace      https://greasyfork.org/scripts/5480-pixiv-expand-thumbnails/
-// @version        2.1.2
+// @version        2.1.3
 // @description    Expand thumbnails and links to the original pages on pixiv.
 // @description:ja pixivのイラストページでサムネイルを各マンガページへ展開します。
 // @description:zh-CN 在Pixiv缩略图页面中显示漫画内容。
@@ -134,6 +134,7 @@ function expandThumbnail () {
     var nodeFigure = document.querySelectorAll('figure')[0];
 
     // うごイラだとundefined
+    var outsideContainer = nodeFigure.querySelectorAll('[role="presentation"]')[0];
     var container = nodeFigure.querySelectorAll('[role="presentation"]')[1];
 
     if (container) {
@@ -171,12 +172,18 @@ function expandThumbnail () {
                             html[++h] = src;
                             html[++h] = '" target="_blank"><img style="max-width:740px;margin:10px 0 10px;" src="';
                             html[++h] = src;
-                            html[++h] = '"/></br></a>';
+                            html[++h] = '"/><br></a>';
                         }
                         container.innerHTML = html.join('');
+
+                        // container styling
                         var att = document.createAttribute('style');
-                        att.value = "display: inline-block;overflow: scroll;text-align:center";
+                        att.value = "display: inline-block;overflow: scroll";
                         container.setAttributeNode(att);
+
+                        att = document.createAttribute('style');
+                        att.value = "text-align:center";
+                        outsideContainer.setAttributeNode(att);
                     }
                 };
                 request.send(null);
