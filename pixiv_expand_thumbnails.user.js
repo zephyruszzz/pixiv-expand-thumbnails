@@ -169,7 +169,7 @@ function expandThumbnail () {
                         for (var i = -1, src; src = srcs[++i]; ) {
                             html[++h] = '<a href="';
                             html[++h] = src;
-                            html[++h] = '" target="_blank"><img style="max-width:740px;margin:10px 0 0;" src="';
+                            html[++h] = '" target="_blank"><img style="max-width:740px;margin:10px 0 10px;" src="';
                             html[++h] = src;
                             html[++h] = '"/></br></a>';
                         }
