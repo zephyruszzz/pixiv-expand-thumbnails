@@ -3,7 +3,7 @@
 // @name:ja        pixiv_expand_thumbnails
 // @name:zh-CN     pixiv_expand_thumbnails
 // @namespace      https://greasyfork.org/scripts/5480-pixiv-expand-thumbnails/
-// @version        2.0.1
+// @version        2.1.1
 // @description    Expand thumbnails and links to the original pages on pixiv.
 // @description:ja pixivのイラストページでサムネイルを各マンガページへ展開します。
 // @description:zh-CN 在Pixiv缩略图页面中显示漫画内容。
@@ -123,7 +123,7 @@ function getNpage(containerNode) {
       <div>                      -- comment/bookmark
       <figcaption>               -- caption
     */
-    return containerNode.previousSibling.firstElementChild.innerText.split('/')[1]
+    return containerNode.previousSibling.firstElementChild.innerText.split('/')[1];
 }
 
 function getIllustId() {
@@ -169,9 +169,9 @@ function expandThumbnail () {
                         for (var i = -1, src; src = srcs[++i]; ) {
                             html[++h] = '<a href="';
                             html[++h] = src;
-                            html[++h] = '" target="_blank"><img style="max-width:740px;margin:20px 0 0;" src="';
+                            html[++h] = '" target="_blank"><img style="max-width:740px;margin:10px 0 0;" src="';
                             html[++h] = src;
-                            html[++h] = '"/></a>';
+                            html[++h] = '"/></br></a>';
                         }
                         container.innerHTML = html.join('');
                         var att = document.createAttribute('style');
@@ -182,6 +182,6 @@ function expandThumbnail () {
                 request.send(null);
             }
             retrievePages(nPages-1, []);
-        };
+        }
     }
 }
