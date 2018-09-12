@@ -123,7 +123,7 @@ function getNpage(containerNode) {
       <div>                      -- comment/bookmark
       <figcaption>               -- caption
     */
-    return containerNode.previousSibling.firstElementChild.innerText.split('/')[1];
+    return containerNode.previousSibling.firstElementChild.innerText.split(' ∕ ')[1];
 }
 
 function getIllustId() {
