@@ -3,7 +3,7 @@
 // @name:ja        pixiv_expand_thumbnails
 // @name:zh-CN     pixiv_expand_thumbnails
 // @namespace      https://greasyfork.org/scripts/5480-pixiv-expand-thumbnails/
-// @version        2.1.5
+// @version        2.1.6
 // @description    Expand thumbnails and links to the original pages on pixiv.
 // @description:ja pixivのイラストページでサムネイルを各マンガページへ展開します。
 // @description:zh-CN 在Pixiv缩略图页面中显示漫画内容。
@@ -123,7 +123,13 @@ function getNpage(containerNode) {
       <div>                      -- comment/bookmark
       <figcaption>               -- caption
     */
-    return containerNode.previousSibling.firstElementChild.innerText.split(' ∕ ')[1];
+    var nPageSpliters = ['⧸', ' ∕ ', '⧸'];
+    for (var i = 0; i < nPageSpliters.length; i++) {
+        var nPage = containerNode.previousSibling.firstElementChild.innerText.split(nPageSpliters[i])[1];
+        if (nPage) {
+            return nPage;
+        }
+    }
 }
 
 function getIllustId() {
@@ -142,7 +148,12 @@ function expandThumbnail () {
         var linkNode = thumb.parentNode;
 
         // イラストだとundefined
-        var linkParams = linkNode.href.split('?')[1];
+        var fullLink = linkNode.href
+        // retry
+        if (!fullLink) {
+            fullLink = linkNode.parentNode.href;
+        }
+        var linkParams = fullLink.split('?')[1];
 
         if (linkParams && !linkParams.indexOf('mode=manga')) {
             var illustId = getIllustId();
