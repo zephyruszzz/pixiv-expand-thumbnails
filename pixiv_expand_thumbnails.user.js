@@ -3,7 +3,7 @@
 // @name:ja        pixiv_expand_thumbnails
 // @name:zh-CN     pixiv_expand_thumbnails
 // @namespace      https://greasyfork.org/scripts/5480-pixiv-expand-thumbnails/
-// @version        2.1.6
+// @version        2.1.7
 // @description    Expand thumbnails and links to the original pages on pixiv.
 // @description:ja pixivのイラストページでサムネイルを各マンガページへ展開します。
 // @description:zh-CN 在Pixiv缩略图页面中显示漫画内容。
@@ -124,8 +124,9 @@ function getNpage(containerNode) {
       <figcaption>               -- caption
     */
     var nPageSpliters = ['⧸', ' ∕ ', '⧸'];
+    var nPageNode = containerNode.parentElement.previousSibling.firstElementChild.firstElementChild;
     for (var i = 0; i < nPageSpliters.length; i++) {
-        var nPage = containerNode.previousSibling.firstElementChild.innerText.split(nPageSpliters[i])[1];
+        var nPage = nPageNode.innerText.split(nPageSpliters[i])[1];
         if (nPage) {
             return nPage;
         }
