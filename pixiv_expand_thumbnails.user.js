@@ -123,7 +123,7 @@ function getNpage(containerNode) {
       <div>                      -- comment/bookmark
       <figcaption>               -- caption
     */
-    var nPageSpliters = ['⧸', ' ∕ ', '⧸'];
+    var nPageSpliters = ['/', '⧸', ' ∕ ', '⧸'];
     var nPageNode = containerNode.parentElement.previousSibling.firstElementChild.firstElementChild;
     for (var i = 0; i < nPageSpliters.length; i++) {
         var nPage = nPageNode.innerText.split(nPageSpliters[i])[1];
