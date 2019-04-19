@@ -1,4 +1,12 @@
-# pixiv-expand-thumbnails
+# pixiv-expand-thumbnails - DEPRECATED
+
+**This project is deprecated due to source site feature change!**
+
+
+
+Past Updates
+====
+
 A Userscript to expand thumbnails in pixiv experience.
 
 
@@ -8,6 +16,7 @@ It is now maintained by the current author.
 
 Features
 ----
+
 
 Expand thumbnails and links to the original illusts and manga pages on pixiv.
 On normal illusts, this script replace thumbnails with original illusts and link to it.
